@@ -2,13 +2,25 @@
 <html>
 <head>
   <title>ContactsManagerBackbone</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
 
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="http://backbonejs.org/backbone.js"></script>
+<%= javascript_include_tag 'application' %>
+
+<script>
+  new App.Router;
+  Backbone.history.start();
+
+  App.contacts = new App.Collections.Contacts;
+  App.contacts.fetch().then(function(){
+    new App.Views.App({ collection: App.contacts });
+  });
+</script>
 </body>
 </html>
