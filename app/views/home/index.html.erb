@@ -25,3 +25,21 @@
     <input type="submit" value="Add Contact">
   </div>
 </form>
+
+<table id="allContacts">
+  <thead>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Email Address</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+</table>
+
+<script id="allContactsTemplate" type="text/template">
+  <td><%%= first_name %></td>
+  <td><%%= last_name %></td>
+  <td><%%= email_address %></td>
+  <td><%%= description %></td>
+</script>
