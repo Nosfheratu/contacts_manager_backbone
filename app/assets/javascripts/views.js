@@ -68,8 +68,24 @@ App.Views.Contact = Backbone.View.extend({
 
   template: template('allContactsTemplate'),
 
+  initialize: function(){
+    this.model.on('destroy', this.unrender, this);
+  },
+
+  events: {
+    'click a.delete': 'deleteContact'
+  },
+
+  deleteContact: function(){
+    this.model.destroy();
+  },
+
   render: function(){
     this.$el.html( this.template( this.model.toJSON() ) );
     return this;
+  },
+
+  unrender: function(){
+    this.remove(); // this.$el.remove()
   }
 });
